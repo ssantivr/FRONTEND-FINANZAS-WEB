@@ -1,0 +1,12 @@
+node_modules
+dist
+.vercel
+*.local
+
+.vercel
+.env*
+!.env.paralelo
+
+# Playwright output
+playwright-report
+test-results

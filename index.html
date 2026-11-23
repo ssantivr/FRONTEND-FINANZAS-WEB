@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="PulsoFinance: registra tus gastos e ingresos, controla presupuestos y consulta tu resumen." />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'><rect width='48' height='48' rx='11' fill='%23f0fdf4'/><rect x='8' y='30' width='6' height='11' rx='1.5' fill='%2316a34a'/><rect x='17' y='24' width='6' height='17' rx='1.5' fill='%2316a34a'/><rect x='26' y='18' width='6' height='23' rx='1.5' fill='%2316a34a'/><rect x='35' y='12' width='6' height='29' rx='1.5' fill='%2316a34a'/><path d='M7 24 17 15l7 5 13-12' fill='none' stroke='%2315803d' stroke-width='3' stroke-linecap='round'/></svg>" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <meta name="theme-color" content="#16a34a" />
+    <script>
+      try { var t = localStorage.getItem('pulso-tema'); if (t === 'oscuro' || t === 'claro') document.documentElement.dataset.theme = t === 'oscuro' ? 'dark' : 'light'; } catch (e) {}
+    </script>
+    <title>PulsoFinance · Finanzas Personales</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
