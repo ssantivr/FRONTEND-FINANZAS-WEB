@@ -37,7 +37,7 @@ npm test
 
 ## Despliegue en Vercel
 
-1. En `vercel.json`, reemplaza `https://finanzas-api.onrender.com` por la URL real del backend.
+1. En `vercel.json`, la reescritura ya apunta a `https://backend-finanzas-web.onrender.com` (cámbiala si publicas la API con otro nombre).
 2. En Vercel, crea el proyecto con *Root Directory* = `frontend`. Vercel detecta Vite: `npm run build` → `dist`.
 3. Otra opción es la CLI: `vercel` (vista previa) y `vercel --prod` (producción).
 
