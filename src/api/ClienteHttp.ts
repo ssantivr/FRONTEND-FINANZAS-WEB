@@ -22,10 +22,15 @@ export function cuandoExpireLaSesion(funcion: () => void): void {
 /** Sent on every call: the API requires it on the cookie endpoints (renovar, logout) as CSRF protection. */
 const CABECERA_APP = { 'X-Requested-With': 'XMLHttpRequest' } as const;
 
+/** Without a limit, a server that accepts the connection but never answers leaves the app loading forever. */
+const TIEMPO_MAXIMO_MS = 25_000;
+
 /** One refresh at a time even if several requests get 401 together. */
 export function renovarConResultado(): Promise<ResultadoRenovacion> {
   if (!renovacionEnCurso) {
-    renovacionEnCurso = fetch(`${baseUrl}/auth/renovar`, { method: 'POST', credentials: 'include', headers: CABECERA_APP })
+    renovacionEnCurso = fetch(`${baseUrl}/auth/renovar`, {
+      method: 'POST', credentials: 'include', headers: CABECERA_APP, signal: AbortSignal.timeout(TIEMPO_MAXIMO_MS),
+    })
       .then(async (r): Promise<ResultadoRenovacion> => {
         if (r.status === 401 || r.status === 403) return 'rechazada';
         if (!r.ok) return 'sin-conexion';
@@ -56,6 +61,7 @@ async function enviar<T>(metodo: string, ruta: string, cuerpo?: unknown, reinten
       headers: cabeceras,
       body: cuerpo === undefined ? undefined : JSON.stringify(cuerpo),
       credentials: 'include',
+      signal: AbortSignal.timeout(TIEMPO_MAXIMO_MS),
     });
   } catch {
     throw new ErrorApi(0, 'No hay conexión con el servidor. Intenta de nuevo.');
